@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traum-Adventskalender</title>
+    <style>
+        /* Global Styles */
+
+        .italiana-regular {
+            font-family: "Italiana", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            background-color: #C2C698;
+            color: #333;
+        }
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            background-color: #C2C698;
+            border-bottom: 1px solid #C2C698;
+            padding: 10px;
+            margin-bottom: 0;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .reindeer {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 150px;
+            height: auto;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        /* Calendar */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            grid-gap: 10px;
+            justify-content: center;
+            background-color: #D9D9D9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .door {
+            width: 80px;
+            height: 80px;
+            background-color: #215b34;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .door.open {
+            transform: rotateY(180deg);
+        }
+
+        .door-content {
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .door-front {
+            background-color: #215b34;
+            color: white;
+        }
+
+        .door-back {
+            display: none
+            /* background-color: #f0f0f0;
+            color: #333;
+            transform: rotateY(180deg);
+            font-size: 0.9rem;
+            padding: 5px; */
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: #333;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .popup.show {
+            display: block;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #215b34;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .popup button:hover {
+            background-color: #1b4829;
+        }
+
+        .door:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+        }
+
+        .elf-shoes {
+            width: 220px; /* Increased size */
+            height: auto;
+            margin-top: -40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="C:\Users\sophi\OneDrive\Miscellaneous\Amber Adventskalender\Bild1.png" alt="Reindeer" class="reindeer">
+            <h1>Traum-Adventskalender</h1>
+            <div class="snowflake">&#10052;</div>
+        </header>
+        <main class="calendar">
+            <!-- Calendar doors -->
+            <div class="door" data-day="1" data-content = "Welche Weihnachtsplätzchen wären deine Freunde?">1
+                <div class="door-content door-front">1</div>
+            </div>
+            <div class="door" data-day="2" data-content="Upsi... vergessen!">2
+                <div class="door-content door-front">2</div>
+            </div>
+            <div class="door" data-day="3" data-content="Wenn du ein Orchester besetzen müsstest, welche Instrumente spielen mit?">3
+                <div class="door-content door-front">3</div>
+            </div>
+            <div class="door" data-day="4" data-content="Shit, schon wieder vergessen! Das war das letzte mal">4
+                <div class="door-content door-front">4</div>
+            </div>
+            <div class="door" data-day="5" data-content="Welche Pastasorte wären deine Freunde? Tagliatelle, Gnocchi, Fussili, Tortellini...">5
+                <div class="door-content door-front">5</div>
+            </div>
+            <div class="door" data-day="6" data-content="Stell dir vor, jede Jahreszeit hat eine eigene Melodie - wie klingen Frühling, Sommer, Herbst und Winter in deinem Kopf?">6
+                <div class="door-content door-front">6</div>
+            </div>
+            <div class="door" data-day="7" data-content="Welche deiner Freunde wäre welche Art von Baum (Tanne, Birke, Kastanie, etc.)?">7
+                <div class="door-content door-front">7</div>
+            </div>
+            <div class="door" data-day="8" data-content="Wenn Weihnachten ein Duft wäre, wie würde es riechen?">8
+                <div class="door-content door-front">8</div>
+            </div>
+            <div class="door" data-day="9" data-content="Welche Tiere repräsentieren deine liebsten Erinnerungen?">9
+                <div class="door-content door-front">9</div>
+            </div>
+            <div class="door" data-day="10" data-content="Wenn die Menschen, die du liebst, Schneeflocken wären, wie würden ihre Formen aussehen?">10
+                <div class="door-content door-front">10</div>
+            </div>
+            <div class="door" data-day="11" data-content="Wenn deine Lieblingsgerichte zu Planeten würden, wie würde dein Universum aussehen?">11
+                <div class="door-content door-front">11</div>
+            </div>
+            <div class="door" data-day="12" data-content="Welche deiner Erinnerungen fühlt sich an wie ein Weihnachtslied?">12
+                <div class="door-content door-front">12</div>
+            </div>
+            <div class="door" data-day="13" data-content="Welche Art von Wolke wäre jede Person in deinem Leben (große, weiche, schmale, flauschige, stürmische)?">13
+                <div class="door-content door-front">13</div>
+            </div>
+            <div class="door" data-day="14" data-content="Welche Gewürze würden deine Lieblingsmenschen darstellen?">14
+                <div class="door-content door-front">14</div>
+            </div>
+            <div class="door" data-day="15" data-content="Wenn jede deiner Lebensphasen eine Tür wäre, wie würden sie aussehen?">15
+                <div class="door-content door-front">15</div>
+            </div>
+            <div class="door" data-day="16" data-content="Welche Weihnachtskugel beschreibt deine Persönlichkeit am besten?">16
+                <div class="door-content door-front">16</div>
+            </div>
+            <div class="door" data-day="17" data-content="Wenn jeder deiner Freunde eine Eissorte wäre, welche Sorten würden sie repräsentieren?">17
+                <div class="door-content door-front">17</div>
+            </div>
+            <div class="door" data-day="18" data-content="Welche Serie oder welcher Film wäre jeder Tag der Woche?">18
+                <div class="door-content door-front">18</div>
+            </div>
+            <div class="door" data-day="19" data-content="Welche Art von Schuhen repräsentiert deine Persönlichkeit (Hausschuhe, Stiefel, Sandalen)?">19
+                <div class="door-content door-front">19</div>
+            </div>
+            <div class="door" data-day="20" data-content="Welche Art von Märchenwelt würdest du betreten, wenn du durch den Adventskalender treten könntest?">20
+                <div class="door-content door-front">20</div>
+            </div>
+            <div class="door" data-day="21" data-content="Wenn Weihnachten ein Geschmack wäre, welcher Geschmack würde es sein (Zimt, Vanille, Orange)?">21
+                <div class="door-content door-front">21</div>
+            </div>
+            <div class="door" data-day="22" data-content="Welche Art von Schnee (zarter Puder, klirrende Eiskristalle, matschiger Haufen) beschreibt deine heutigen Gedanken?">22
+                <div class="door-content door-front">22</div>
+            </div>
+            <div class="door" data-day="23" data-content="Welche deiner Freunde würden am Besten in welcher Serie / Film mitspielen können?">23
+                <div class="door-content door-front">23</div>
+            </div>
+            <div class="door" data-day="24" data-content="Wenn jede Person in deinem Leben ein Weihnachtslied wäre, welches Lied würde zu ihnen passen?">24
+                <div class="door-content door-front">24</div>
+            </div>
+        </main>
+        <footer class="footer">
+            <img src="C:\Users\sophi\OneDrive\Miscellaneous\Amber Adventskalender\Bild2.png" alt="Elf Shoes" class="elf-shoes">
+        </footer>
+    </div>
+
+    <div class="popup" id="popup">
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">Schließen</button>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const doors = document.querySelectorAll(".door");
+            const popup = document.getElementById("popup");
+            const popupMessage = document.getElementById("popup-message");
+
+            // Add click event for each door
+            doors.forEach((door) => {
+                door.addEventListener("click", () => {
+                    const day = door.dataset.day;
+                    const today = new Date().getDate();
+
+                    if (day <= today) {
+                        // door.classList.toggle("open");
+                        const content = door.dataset.content;
+                        popupMessage.textContent = content; // Zeige den Text im Popup
+                        popup.classList.add("show");
+                    } else {
+                        // Show popup with "zu früh"-message
+                        popupMessage.textContent = `Türchen ${day} kannst du erst am ${day}. Dezember öffnen!`;
+                        popup.classList.add("show");
+                    }
+                });
+            });
+        });
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.remove("show");
+        }
+    </script>
+</body>
+</html>
